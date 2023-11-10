@@ -5,6 +5,7 @@
   </nav>
   <div class="signup">
     <div class="container">
+      <logo/>
       <div class="Sign-up">
         <div class="box">
           <h2>Create a new account</h2>
@@ -14,13 +15,13 @@
         </div>
         <form action="/login">
           <label for="username" class="child-left">Username</label>
-          <input type="text" id="username" placeholder="Someone5121" required v-model="username">
+          <input type="text" id="username" placeholder="Someone5121" required v-model="username" maxlength="20">
           <label for="email" class="child-left">Email</label>
           <input type="email" id="email" placeholder="someone@gmail/com" required v-model="email">
           <label for="password" class="child-left">Password</label>
-          <input type="password" id="password" placeholder="password" required v-model="password">
+          <input type="password" id="password" placeholder="password" required v-model="password" minlength="8" maxlength="20">
           <label for="age" class="child-left">Age</label>
-          <input type="number" id="age" placeholder="18" required v-model="age">
+          <input type="number" id="age" placeholder="18" required v-model="age" min="18">
           <button class="Sign-up-button" @click="submitform()">Sign-up</button>
           <p v-if="valid">Sign up Successfully</p>
           <router-link to="../" class="form-p">
@@ -36,6 +37,7 @@
 <script>
 // import axios from "axios"
 // @ is an alias to /src
+import logo from "../components/logo.vue"
 import login from './Login.vue'
 import axios from 'axios'
 export default {
@@ -45,12 +47,13 @@ export default {
       username: '',
       email: '',
       password: '',
-      age: 0,
+      age: null,
       valid: false
     }
   },  
   components: {
-    login
+    login,
+    logo
   },
   methods : {
     submitform() {
@@ -66,14 +69,14 @@ export default {
 </script>
 <style scoped>
 nav {
-  background-color: #EEE;
-  color:#140044;
+  color: white;
+  background:#140044;
   padding: 30px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
 }
 nav a:hover {
   color: #4b00ff;
@@ -82,6 +85,11 @@ nav a.router-link-exact-active {
   color: #4b00ff;
 }
 .container {
+  max-height: 100vh;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   margin: 50px auto;
   transform: translate(-50%, -50%);
   position: absolute;
@@ -89,6 +97,7 @@ nav a.router-link-exact-active {
   left: 50%;
 }
 .Sign-up{
+  margin: 0 100px;
   color: white;
   background-image: linear-gradient(90deg, #000000, #4b00ff);
   padding: 40px 60px;
@@ -164,5 +173,10 @@ input::placeholder {
 }
 .form-p:hover {
   color: #eeeeee67;
+}
+@media (max-width: 768px) {
+  .container{
+    flex-direction: column;
+  }
 }
 </style>

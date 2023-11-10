@@ -5,12 +5,13 @@
     </nav>
     <div class="Login">
       <div class="container">
+        <logo/>
         <div class="login">
           <div class="box">
             <h2>Login</h2>
             <p>Sign in to continue</p>
           </div>
-          <form action="">
+          <form >
             <label for="email" class="child-left">Email</label>
             <input type="email" id="email" placeholder="someone@gmail/com" required v-model="email">
             <label for="password" class="child-left">Password</label>
@@ -26,6 +27,7 @@
 
 <script>
 // @ is an alias to /src
+import logo from "../components/logo.vue"
 import signup from './SignUp.vue'
 import axios from 'axios'
 export default {
@@ -39,6 +41,7 @@ export default {
   },
   components: {
     signup,
+    logo
   },
   methods: {
     check() {
@@ -52,20 +55,20 @@ export default {
           }
         })
       }
-    }
+    },
   }
 }
 </script>
 <style scoped>
 nav {
-  background-color: #EEE;
-  color:#140044;
+  color: white;
+  background:#140044;
   padding: 30px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
 }
 nav a:hover {
   color: #4b00ff;
@@ -74,13 +77,18 @@ nav a.router-link-exact-active {
   color: #4b00ff;
 }
 .container {
+  max-height: 100vh;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   margin: 50px auto;
   transform: translate(-50%, -50%);
   position: absolute;
   top: 50%;
   left: 50%;
-}
-.login{
+}.login{
+  margin: 0 100px;
   color: white;
   background-image: linear-gradient(90deg, #000000, #4b00ff);
   padding: 50px;
@@ -159,5 +167,10 @@ input::placeholder {
 }
 .form-p:hover {
   color: #eeeeee67;
+}
+@media (max-width: 768px) {
+  .container{
+    flex-direction: column;
+  }
 }
 </style>
