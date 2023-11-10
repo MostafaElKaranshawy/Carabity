@@ -52,9 +52,6 @@ export default {
           }
         })
       }
-      else{ 
-        alert("Please enter your email and password")
-      }
     }
   }
 }
