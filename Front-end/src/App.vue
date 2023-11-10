@@ -1,12 +1,11 @@
 <template>
-  <nav>
-    <!-- <router-link to="/">Login</router-link> | 
-    <router-link to="/signup">Sign Up</router-link> -->
-  </nav>
   <router-view/>
 </template>
 
 <style>
+.no-decoration {
+  text-decoration: none;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,7 +23,9 @@ nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
+nav a:hover {
+  color: #4b00ff;
+}
 nav a.router-link-exact-active {
   color: #4b00ff;
 }

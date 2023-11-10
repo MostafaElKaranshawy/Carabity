@@ -1,4 +1,8 @@
 <template>
+  <nav>
+    <router-link to="/login" class="no-decoration">Login</router-link> | 
+    <router-link to="/signup" class="no-decoration">Sign Up</router-link>
+  </nav>
   <div class="signup">
     <div class="container">
       <div class="Sign-up">
@@ -40,6 +44,22 @@ export default {
 }
 </script>
 <style scoped>
+nav {
+  background-color: #EEE;
+  color:#140044;
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+nav a:hover {
+  color: #4b00ff;
+}
+nav a.router-link-exact-active {
+  color: #4b00ff;
+}
 .container {
   margin: 50px auto;
   transform: translate(-50%, -50%);

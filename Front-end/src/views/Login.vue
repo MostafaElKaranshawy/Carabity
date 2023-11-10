@@ -1,23 +1,27 @@
 <template>
-  <div class="Login">
-    <div class="container">
-      <div class="login">
-        <div class="box">
-          <h2>Login</h2>
-          <p>Sign in to continue</p>
+    <nav>
+    <router-link to="/login" class="no-decoration">Login</router-link> | 
+    <router-link to="/signup" class="no-decoration">Sign Up</router-link>
+    </nav>
+    <div class="Login">
+      <div class="container">
+        <div class="login">
+          <div class="box">
+            <h2>Login</h2>
+            <p>Sign in to continue</p>
+          </div>
+          <form>
+            <label for="email" class="child-left">Email</label>
+            <input type="email" id="email" placeholder="someone@gmail/com">
+            <label for="password" class="child-left">Password</label>
+            <input type="password" id="password" placeholder="password">
+            <button class="login-button">Login</button>
+            <p class="forget-password form-p">Forget Password ?</p>
+            <router-link to="/signup" class="form-p">Sign Up !</router-link>
+          </form>
         </div>
-        <form>
-          <label for="email" class="child-left">Email</label>
-          <input type="email" id="email" placeholder="someone@gmail/com">
-          <label for="password" class="child-left">Password</label>
-          <input type="password" id="password" placeholder="password">
-          <button class="login-button">Login</button>
-          <p class="forget-password form-p">Forget Password ?</p>
-          <router-link to="/signup" class="form-p">Sign Up !</router-link>
-        </form>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -31,6 +35,22 @@ export default {
 }
 </script>
 <style scoped>
+nav {
+  background-color: #EEE;
+  color:#140044;
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+nav a:hover {
+  color: #4b00ff;
+}
+nav a.router-link-exact-active {
+  color: #4b00ff;
+}
 .container {
   margin: 50px auto;
   transform: translate(-50%, -50%);
