@@ -1,0 +1,58 @@
+{
+    "Cars": [
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 2,
+            "cardate": 20,
+            "cartype": "AUdi"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "bmw"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "Mercedes"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "Mercedes"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "Mercedes"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "Mercedes"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "Mercedes"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "Mercedes"
+        },
+        {
+            "carphoto": "../.././img/shuffle-01.jpg",
+            "carprice": 25000,
+            "cardate": 2003,
+            "cartype": "Mercedes"
+        }
+    ]
+}

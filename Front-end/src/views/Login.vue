@@ -11,7 +11,7 @@
             <h2>Login</h2>
             <p>Sign in to continue</p>
           </div>
-          <form >
+          <form action="/home">
             <label for="email" class="child-left">Email</label>
             <input type="email" id="email" placeholder="someone@gmail/com" required v-model="email">
             <label for="password" class="child-left">Password</label>
@@ -80,7 +80,7 @@ nav a.router-link-exact-active {
   max-height: 100vh;
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin: 50px auto;
   transform: translate(-50%, -50%);
@@ -156,7 +156,6 @@ input::placeholder {
   background: #6200ff73;
   color: #eee;
   cursor: pointer;
-  /* box-shadow: 1px 1px 10px 0px #000000; */
 }
 .form-p {
   margin: 3px 0 0 0;

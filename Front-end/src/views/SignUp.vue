@@ -1,4 +1,5 @@
 <template>
+  <!-- <headerbar/> -->
   <nav>
     <router-link to="/login" class="no-decoration">Login</router-link> | 
     <router-link to="/signup" class="no-decoration">Sign Up</router-link>
@@ -37,6 +38,7 @@
 <script>
 // import axios from "axios"
 // @ is an alias to /src
+import headerbar from "../components/headerbar.vue"
 import logo from "../components/logo.vue"
 import login from './Login.vue'
 import axios from 'axios'
@@ -53,7 +55,8 @@ export default {
   },  
   components: {
     login,
-    logo
+    logo,
+    headerbar
   },
   methods : {
     submitform() {
@@ -88,7 +91,7 @@ nav a.router-link-exact-active {
   max-height: 100vh;
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin: 50px auto;
   transform: translate(-50%, -50%);
