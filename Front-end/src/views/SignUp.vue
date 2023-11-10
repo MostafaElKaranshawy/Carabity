@@ -15,13 +15,13 @@
         <form>
           <label for="username" class="child-left">Username</label>
           <input type="text" id="username" placeholder="Someone5121">
-          <label for="email" class="child-left">Email</label>
+          <label for="email" class="child-left" >Email</label>
           <input type="email" id="email" placeholder="someone@gmail/com">
           <label for="password" class="child-left">Password</label>
           <input type="password" id="password" placeholder="password">
           <label for="age" class="child-left">Age</label>
           <input type="age" id="age" placeholder="18">
-          <button class="Sign-up-button">Sign-up</button>
+          <button class="Sign-up-button" @click="signup_validation">Sign-up</button>
           <router-link to="../" class="form-p">
             <p>Already Have An Account ?</p>
             <p>Click here to Login</p>
@@ -40,6 +40,38 @@ export default {
   name: 'signup',
   components: {
     login
+  },
+  methods:{
+    signup_validation(){
+      const firebaseApp = firebase.initializeApp({ 
+        apiKey: "AIzaSyAoxljcGBar_SlNpBpNkPPhbXEIIxlRO7w",
+  authDomain: "validation-c85e0.firebaseapp.com",
+  projectId: "validation-c85e0",
+  storageBucket: "validation-c85e0.appspot.com",
+  messagingSenderId: "523378528436",
+  appId: "1:523378528436:web:f679e933ce86f6939607e1"
+      });
+      const db = firebaseApp.firestore();
+      const auth = firebaseApp.auth();
+      const email = document.getElementById("email").value ;
+      const password = document.getElementById("password").value ;
+      console.log(email,password);
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        // Signed in  userCredential
+        //var user = userCredential.user;
+        console.log("signed in") ;
+        alert("done");
+        // ...
+      })
+      .catch((error) => {
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
+        console.log("error") ;
+        alert(error) ;
+        // ..
+      });
+    }
   }
 }
 </script>
