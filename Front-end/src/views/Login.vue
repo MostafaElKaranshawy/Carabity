@@ -11,11 +11,11 @@
             <h2>Login</h2>
             <p>Sign in to continue</p>
           </div>
-          <form action="/home">
+          <form :action="registed">
             <label for="email" class="child-left">Email</label>
             <input type="email" id="email" placeholder="someone@gmail/com" required v-model="email">
             <label for="password" class="child-left">Password</label>
-            <input type="password" id="password" placeholder="password" required v-model="password">
+            <input type="password" id="password" placeholder="password" required v-model="password" minlength="8">
             <button class="login-button" @click="check()">Login</button>
             <p class="forget-password form-p">Forget Password ?</p>
             <router-link to="/signup" class="form-p">Sign Up !</router-link>
@@ -37,6 +37,7 @@ export default {
       email : '',
       password : '', 
       username: '',
+      registed : '' ,
     }
   },
   components: {
@@ -49,10 +50,15 @@ export default {
         axios.post('http://localhost:8081/getuser', {"email" : this.email,"password" :this.password})
         .then(res => {
           this.username = res.data.username;
-          if(this.username != "none")alert("Hello " + this.username)
+          if(this.username != "none"){
+            alert("Hello " + this.username) ;
+            this.registed='/home';
+        }
           else {
             alert("Wrong Email or password")
           }
+        }).catch(rejected =>{
+          alert("Wrong Email or Password");
         })
       }
     },

@@ -60,7 +60,7 @@ export default {
   },
   methods : {
     submitform() {
-        if(this.username != '' && this.email != '' && this.password != '' && this.age >= 18){
+        if(this.username != '' && this.email != '' && this.password != '' && this.age >= 18 &&this.password.length>=8){
         axios.post('http://localhost:8081/check', {"username" : this.username,"password" :this.password,"email" : this.email,"age" : this.age})
         .then(res => {this.valid = res.data})
         .then(alert("Signed up successfully"))
