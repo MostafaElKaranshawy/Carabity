@@ -12,16 +12,17 @@
             <p>Already have account ? Log in here</p>
           </router-link>
         </div>
-        <form>
+        <form action="/login">
           <label for="username" class="child-left">Username</label>
-          <input type="text" id="username" placeholder="Someone5121">
+          <input type="text" id="username" placeholder="Someone5121" required v-model="username">
           <label for="email" class="child-left">Email</label>
-          <input type="email" id="email" placeholder="someone@gmail/com">
+          <input type="email" id="email" placeholder="someone@gmail/com" required v-model="email">
           <label for="password" class="child-left">Password</label>
-          <input type="password" id="password" placeholder="password">
+          <input type="password" id="password" placeholder="password" required v-model="password">
           <label for="age" class="child-left">Age</label>
-          <input type="age" id="age" placeholder="18">
-          <button class="Sign-up-button">Sign-up</button>
+          <input type="number" id="age" placeholder="18" required v-model="age">
+          <button class="Sign-up-button" @click="submitform()">Sign-up</button>
+          <p v-if="valid">Sign up Successfully</p>
           <router-link to="../" class="form-p">
             <p>Already Have An Account ?</p>
             <p>Click here to Login</p>
@@ -33,13 +34,33 @@
 </template>
 
 <script>
+// import axios from "axios"
 // @ is an alias to /src
 import login from './Login.vue'
-
+import axios from 'axios'
 export default {
   name: 'signup',
+  data(){
+    return {
+      username: '',
+      email: '',
+      password: '',
+      age: 0,
+      valid: false
+    }
+  },  
   components: {
     login
+  },
+  methods : {
+    submitform() {
+        if(this.username != '' && this.email != '' && this.password != '' && this.age >= 18){
+        axios.post('http://localhost:8081/check', {"username" : this.username,"password" :this.password,"email" : this.email,"age" : this.age})
+        .then(res => {this.valid = res.data})
+        .then(alert("Signed up successfully"))
+        .catch(err => console.log("error"));
+      }
+    }
   }
 }
 </script>
