@@ -60,14 +60,46 @@ export default {
   },
   methods : {
     submitform() {
-        if(this.username != '' && this.email != '' && this.password != '' && this.age >= 18 &&this.password.length>=8){
+      document.getElementById('username').classList.remove()
+        document.getElementById('email').classList.remove()
+        document.getElementById('password').classList.remove()
+        document.getElementById('age').classList.remove()
+        if(this.username != '' && this.email != '' && this.password != '' && this.age >= 18 &&this.password.length>=8 && this.age < 100){
+          
+
         axios.post('http://localhost:8081/check', {"username" : this.username,"password" :this.password,"email" : this.email,"age" : this.age})
-        .then(res => {this.valid = res.data})
+        .then(res => {
+          this.valid = res.data
+          if(this.username != "none"){
+          document.querySelector(".signup-form").onsubmit = function() {
+              return false;
+            }
+            document.querySelector(".form-p").click();
+          }
+          else {
+            alert("Wrong Email or password")
+        }
+        })
+        .then(document.querySelector(".form-p").click())
         .then(alert("Signed up successfully"))
         .catch(err => console.log("error"));
       }
-    }
+      else{
+        if(this.username == ''){
+          document.getElementById('username').classList.add('error')
+        }
+
+        if(this.email == '')
+          document.getElementById('email').classList.add('error')
+
+        if(this.password == '')
+          document.getElementById('password').classList.add('error')
+
+        if(this.age == null || this.age >= 100)
+          document.getElementById('age').classList.add('error')
+      }
   }
+}
 }
 </script>
 <style scoped>
