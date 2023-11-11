@@ -8,8 +8,8 @@
           <img class="logo" src="../assets/test-removebg.png" alt="">
         </div>
         <div class="registration">
-          <button class="sign-up-button "><router-link to="/signup" class="no-decoration">Sign Up </router-link></button>
-          <button class="log-in-button"><router-link to="/login" class="no-decoration">Log In </router-link></button>
+          <router-link to="/signup" class="no-decoration sign-up-button hovering">Sign Up </router-link>
+          <router-link to="/login" class="no-decoration log-in-button hovering">Log In </router-link>
         </div>
       </div>
       <div class="slideshow-container">
@@ -97,6 +97,7 @@ export default{
 </script>
 
 <style scoped>
+
 .no-decoration {
   text-decoration: none;
   color: white;
@@ -123,11 +124,15 @@ export default{
   border-width:1px ;
 }
 
+.hovering:hover {
+  color: #128ad0;
+  background-color: #145072;
+}
 .sign-up-button, .log-in-button{
+  transition: 0.3s;
   background-color: transparent; 
   color: white;
-  border-color: #128ad0;
-  border-width: 1px;
+  border: solid .5px #128ad0;
   margin-right:20px;
   border-radius: 11px;
   padding: 7px 18px;
