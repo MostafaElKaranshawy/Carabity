@@ -25,7 +25,7 @@
           <input type="number" id="age" placeholder="18" required v-model="age" min="18">
           <button class="Sign-up-button" @click="submitform()">Sign-up</button>
           <p v-if="valid">Sign up Successfully</p>
-          <router-link to="../" class="form-p">
+          <router-link to="/login" class="form-p">
             <p>Already Have An Account ?</p>
             <p>Click here to Login</p>
           </router-link>

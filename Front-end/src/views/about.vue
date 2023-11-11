@@ -1,21 +1,12 @@
 <template>
-    <nav>
-        <h1>Carabity</h1>
-        <input type="search" placeholder="Search a car" class="search-bar">
-        <div class="links">
-            <router-link to="/home" class="no-decoration">Home</router-link>
-            <router-link to="/about" class="no-decoration">About</router-link>
-            <router-link to="/contact" class="no-decoration">Contact</router-link>
-        </div>
-    </nav>
+    <headerbar/>
 </template>
 <script>
-import contact from "../views/contact.vue"
-import home from "../views/Home.vue"
+import headerbar from "../components/headerbar.vue"
 export default{
     name: "about",
     components: {
-        home, contact
+        headerbar
     }
 }
 </script>

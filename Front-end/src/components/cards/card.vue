@@ -1,28 +1,40 @@
 <template>
     <div class="card">
-        <div class="type">{{cartype}}</div>
+        <div class="type">{{ cartype }}</div>
+        <div class="type1">Sport</div>
         <span class="photo">
             <img src="../cover1.jpg" alt="CAR">
         </span>
         <br>
         <div class="data">
-            <div class="price"> Price: {{carprice}}</div>
-            <div class="date"> Date: {{cardate}}</div>
+            <span class="price"> ${{carprice}}</span>
         </div>
-        <input type="button" class="see" value="See Car">
     </div>
 </template>
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 export default{
-    props : ["carphoto", "carprice", "cardate", "cartype"],
+    props : ["carphoto", "carprice", "cartype", "cardate"],
     name: 'card',
+    components : {
+        FontAwesomeIcon
+    }
 }
 </script>
 <style>
+.icon {
+    font-size: 50px;
+}
 .card{
-    width: 300px;
-    background-color: rgb(80, 80, 80);
-    color: white;
+    width: 200px;
+    background-color: white;
+    color: black;
     border: 1px solid #afafaf;
     padding: 20px;
     border-radius: 10px;
@@ -34,19 +46,27 @@ export default{
     transform: scale(1.1);
 }
 .type{
+    text-align: left;
     font-size: 15px;
     font-weight: bold;
+}
+.type1 {
+    text-align: left;
+    font-size: 12px;
+    color: #b5b5b5;
     margin-bottom: 20px;
 }
 .photo img{
+    height: 150px;
     max-width: 100%;
     border-radius: 5px;
     margin-bottom: 20px;
 }
 .data{
-    font-size: 13px;
-    display: flex;
-    justify-content: space-between;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 .see {
     background:inherit;

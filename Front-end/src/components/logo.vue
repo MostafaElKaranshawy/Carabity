@@ -1,7 +1,7 @@
 <template>
     <div class="main-container">
         <div class="text">
-            <router-link to="/" class="h1">
+            <router-link to="/" class="h1" replace>
                 <h1>Carabity</h1>
             </router-link>
             <p>Buy and rent any car you want.</p>

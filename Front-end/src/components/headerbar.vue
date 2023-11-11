@@ -11,26 +11,22 @@
 </template>
 
 <script>
-import about from "../views/about.vue"
-import contact from "../views/contact.vue"
-import home from "../views/Home.vue"
 export default {
     name: "headerbar",
-    components: {
-        home,
-        contact,
-        about,
-    }
 }
 </script>
 
 <style scoped>
+h1 {
+    cursor: pointer;
+}
 .no-decoration {
     text-decoration: none;
 }
 nav {
-color: white;
-background:#140044;
+    border-bottom: 0.25px solid #cfcdff;
+    color: #4b00ff;
+    background: white;
 padding: 20px;
 display: flex;
 justify-content: space-between;
@@ -54,13 +50,15 @@ nav a.router-link-exact-active {
     background: #4b00ff;}
 
 .search-bar {
-    background: lightgrey;
+    color: #4b00ff;
+    border: solid 0.25px #d4d4d4;
+    font-size: 15px;
+    background: white;
     width: 500px;
-    border: none;
     border-radius: 10px;
     padding: 5px;
 }
 .search-bar:hover {
-    background: rgb(171, 171, 171);
+    background: rgb(232 240 255);
 }
 </style>
