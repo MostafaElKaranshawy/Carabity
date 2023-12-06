@@ -1,5 +1,4 @@
-package com.backend.carStore;
-
+package com.example.demo;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
