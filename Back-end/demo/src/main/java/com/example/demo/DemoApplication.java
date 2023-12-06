@@ -55,6 +55,19 @@ public class DemoApplication {
     @PostMapping("/check")
     public boolean createuser(@RequestBody User user){
       return u.save(user);
+    }  
+
+    @PostMapping("/getCarsInfo")
+    public List<Car> getCarsInfo(@RequestParam String path) {
+        try {
+            System.out.println("path : ");
+            System.out.println(path);
+            List<Car> cars = CarsService.loadFromJson(path);
+            return cars;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
     
 }
