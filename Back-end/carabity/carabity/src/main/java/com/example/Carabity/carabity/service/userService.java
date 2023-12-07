@@ -24,6 +24,7 @@ public class userService {
         }
         user.setStatus("Successfully signed");
         r.add(user);
+        this.currentuser = user ;
         return user ;
     }
     public User signin(User user) throws IOException {

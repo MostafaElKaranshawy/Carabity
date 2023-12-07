@@ -1,5 +1,7 @@
 package com.example.Carabity.carabity.controller;
 
+import com.example.Carabity.carabity.service.Car;
+import com.example.Carabity.carabity.service.CarsService;
 import com.example.Carabity.carabity.service.User;
 import com.example.Carabity.carabity.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @CrossOrigin("http://localhost:8080")
@@ -81,6 +84,19 @@ public class control {
             return ResponseEntity.ok(car+" added successfully");
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error!") ;
+        }
+    }
+    @GetMapping("/getCarsInfo")
+    public List<Car> getCarsInfo() {
+        try {
+            String path = "E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\manyCars.json";
+            System.out.println("path : ");
+            System.out.println(path);
+            List<Car> cars = CarsService.loadFromJson(path);
+            return cars;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
