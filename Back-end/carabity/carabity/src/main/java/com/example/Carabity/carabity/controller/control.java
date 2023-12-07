@@ -21,22 +21,6 @@ public class control {
 
     @Autowired
     private userService u;
-//    @GetMapping("/user")
-//    public List<User> getUsers() {
-//        return u.getUserlist();
-//    }
-//
-//    @PostMapping("/getuser")
-//    public User getuser(@RequestBody user_get us){
-//        String email = us.getEmail();
-//        String password = us.getPassword();
-//        return u.get(email, password);
-//    }
-//
-//    @PostMapping("/check")
-//    public boolean createuser(@RequestBody User user){
-//        return u.save(user);
-//    }
     @PostMapping("/signup")
     public ResponseEntity<User> signUp(@RequestBody User user) throws IOException {
        try {
@@ -69,6 +53,37 @@ public class control {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
     }
+    @PostMapping("/addnew")
+    public  ResponseEntity<String> newCAr(@RequestParam String car) throws IOException {
+       try {
+            System.out.println("arrive " + car);
+            u.addNewcar(car);
+            return ResponseEntity.ok(car+" added successfully");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error!") ;
+        }
+    }
+    @PostMapping("/addold")
+    public  ResponseEntity<String> oldCar(@RequestParam String car) throws IOException {
+        try {
+            System.out.println("arrive " + car);
+            u.addOldcar(car);
+            return ResponseEntity.ok(car+" added successfully");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error!") ;
+        }
+    }
+    @PostMapping("/rent")
+    public  ResponseEntity<String> rent(@RequestParam String car) throws IOException {
+        try {
+            System.out.println("arrive " + car);
+            u.addrent(car);
+            return ResponseEntity.ok(car+" added successfully");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error!") ;
+        }
+    }
+
     @PostMapping("/load")
     public ArrayList<User>load() throws IOException {
         return u.loadAll();

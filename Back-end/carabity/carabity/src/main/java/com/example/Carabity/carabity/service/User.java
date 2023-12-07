@@ -12,15 +12,19 @@ public class User {
     private String password;
     private String email;
     private int age;
-    private ArrayList<String> newCars ;
-    private ArrayList<String> rentCars ;
-    private ArrayList<String> oldCars ;
+    private ArrayList<String> newCars = new ArrayList<String>() ;
+    private ArrayList<String> rentCars = new ArrayList<String>();
+    private ArrayList<String> oldCars = new ArrayList<String>();
     private String status ;
     public User(User user) {
-        this.username = user.username;
-        this.password = user.password;
-        this.email = user.email;
-        this.age = user.age;
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.email = user.getEmail();
+        this.age = user.getAge();
+        //this.newCars = user.getNewCars() ;
+//        newCars = new ArrayList<String>() ;
+//        rentCars = new ArrayList<String >() ;
+//        oldCars = new ArrayList<String>() ;
     }
     public User(){}
     public String getUsername() {
@@ -72,6 +76,18 @@ public class User {
         this.rentCars = rentCars;
     }
 
+    public void addnew(String car){
+        //System.out.println(this.email + " and we enter the user class" );
+        newCars.add(car) ;
+        //System.out.println(newCars);
+    }
+    public void addold(String car){
+        System.out.println(oldCars.add(car));   ;
+    }
+    public void rent(String car){
+        System.out.println(rentCars.add(car) );
+    }
+
     public String getStatus() {
         return status;
     }
@@ -79,4 +95,12 @@ public class User {
     public void setStatus(String status) {
         this.status = status;
     }
+
+//    public void setNewCars(String newCars) {
+//        this.newCars = newCars;
+//    }
+
+//    public String getNewCars() {
+//        return newCars;
+//    }
 }
