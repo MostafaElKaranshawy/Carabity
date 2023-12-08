@@ -43,7 +43,9 @@ public class Car {
     @JsonProperty("Features")
     private List<String> features;
 
-
+    @JsonProperty("Availability")
+    private String Availability  ;
+    public Car(){}
 
     public String getId() {
         return id;
@@ -149,5 +151,12 @@ public class Car {
         this.features = features;
     }
 
+    public String isAvailability() {
+        return Availability;
+    }
+
+    public void setAvailability(String availability) {
+        Availability = availability;
+    }
     // Additional setters if needed
 }

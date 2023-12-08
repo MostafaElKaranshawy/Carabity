@@ -1,9 +1,6 @@
 package com.example.Carabity.carabity.controller;
 
-import com.example.Carabity.carabity.service.Car;
-import com.example.Carabity.carabity.service.CarsService;
-import com.example.Carabity.carabity.service.User;
-import com.example.Carabity.carabity.service.userService;
+import com.example.Carabity.carabity.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -24,6 +21,7 @@ public class control {
 
     @Autowired
     private userService u;
+    private CarsService c ;
     @PostMapping("/signup")
     public ResponseEntity<User> signUp(@RequestBody User user) throws IOException {
        try {
@@ -57,33 +55,63 @@ public class control {
         }
     }
     @PostMapping("/addnew")
-    public  ResponseEntity<String> newCAr(@RequestParam String car) throws IOException {
+    public  ResponseEntity<List<Car>> newCAr(@RequestParam String car) throws IOException {
        try {
             System.out.println("arrive " + car);
             u.addNewcar(car);
-            return ResponseEntity.ok(car+" added successfully");
+           List<Car> cars = CarsService.loadFromJson();
+           for (int i = 0 ; i <cars.size(); i ++) {
+               if(cars.get(i).getId().equals(car)){
+                   cars.get(i).setAvailability("unavailable");
+                   break ;
+               }
+           }
+           Load load = new Load() ;
+           load.setCars(cars);
+           CarsService.saveFromjson(load);
+            return ResponseEntity.ok(cars);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error!") ;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
     }
     @PostMapping("/addold")
-    public  ResponseEntity<String> oldCar(@RequestParam String car) throws IOException {
+    public  ResponseEntity<List<Car>> oldCar(@RequestParam String car) throws IOException {
         try {
             System.out.println("arrive " + car);
             u.addOldcar(car);
-            return ResponseEntity.ok(car+" added successfully");
+            List<Car> cars = CarsService.loadFromJson();
+            for (int i = 0 ; i <cars.size(); i ++) {
+                if(cars.get(i).getId().equals(car)){
+                    cars.get(i).setAvailability("unavailable");
+                    break ;
+                }
+            }
+            Load load = new Load() ;
+            load.setCars(cars);
+            CarsService.saveFromjson(load);
+            return ResponseEntity.ok(cars);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error!") ;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
     }
     @PostMapping("/rent")
-    public  ResponseEntity<String> rent(@RequestParam String car) throws IOException {
+    public  ResponseEntity<List<Car>> rent(@RequestParam String car) throws IOException {
         try {
             System.out.println("arrive " + car);
             u.addrent(car);
-            return ResponseEntity.ok(car+" added successfully");
+            List<Car> cars = CarsService.loadFromJson();
+        for (int i = 0 ; i <cars.size(); i ++) {
+            if(cars.get(i).getId().equals(car)){
+                cars.get(i).setAvailability("unavailable");
+                break ;
+            }
+        }
+        Load load = new Load() ;
+        load.setCars(cars);
+        CarsService.saveFromjson(load);
+            return ResponseEntity.ok(cars);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error!") ;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
     }
     @GetMapping("/getCarsInfo")
@@ -92,7 +120,7 @@ public class control {
             String path = "E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\manyCars.json";
             System.out.println("path : ");
             System.out.println(path);
-            List<Car> cars = CarsService.loadFromJson(path);
+            List<Car> cars = CarsService.loadFromJson();
             return cars;
         } catch (Exception e) {
             e.printStackTrace();
