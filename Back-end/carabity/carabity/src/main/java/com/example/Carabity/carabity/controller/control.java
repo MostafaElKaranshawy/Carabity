@@ -25,9 +25,7 @@ public class control {
     public ResponseEntity<User> signUp(@RequestBody User user) throws IOException {
        try {
            System.out.println("arrive");
-           System.out.println(user.getEmail() + "   " + user.getUsername()  );
            user = u.signup(user);
-           System.out.println(user.getStatus());
            if(user.getStatus().equals("Successfully signed")) {
                System.out.println("sign up ");
                return ResponseEntity.ok(user);
@@ -127,6 +125,21 @@ public class control {
             return null;
         }
     }
+    @PostMapping("/changePassword/{oldPassword}/{newPassword}")
+    public  ResponseEntity<String> changePassword(@PathVariable String oldPassword , @PathVariable String newPassword){
+        try {
+            String status = u.changePassword(oldPassword, newPassword) ;
+            if(status.equals("Password changed successfully")) {
+
+                return ResponseEntity.ok(status);
+            }else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(status)  ;
+            }
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
+        }
+    }
+
 
     @PostMapping("/load")
     public ArrayList<User>load() throws IOException {
