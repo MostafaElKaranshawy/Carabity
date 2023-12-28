@@ -1,45 +1,62 @@
 <template>
     <div class="card">
-        <div class="type">{{ cartype }}</div>
-        <div class="type1">Sport</div>
+        <div class="type">
+            <span>{{ Brand }}</span>
+            <span> {{Model}} </span>
+        </div>
         <span class="photo">
-            <img src="../cover1.jpg" alt="CAR">
+            <!-- <img :src="require(`${Photo}`)" alt="CAR"> -->
+            <img :src="require(`../../assets/cars-photos/${Photo}`)" alt="CAR">
         </span>
         <br>
         <div class="data">
-            <span class="price"> ${{carprice}}</span>
+            <div class="props">
+                <span> {{ Transmission }} </span>
+                <span> {{ Engine }} </span>
+                <span> {{ Fuel }} </span>
+            </div>
+            <span class="price"> <sup>EGP</sup> {{ Price.toLocaleString() }} <sub v-if="AdType === 'Rent'">/day</sub></span>
+            <span class="available" v-if="Availability === 'unavailable'">Unavailable</span>
         </div>
     </div>
 </template>
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-/* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-/* import specific icons */
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 export default{
-    props : ["carphoto", "carprice", "cartype", "cardate"],
+    
+    props : ["id"
+        ,"Photo",
+        "Price",
+        "Brand",
+        "Model",
+        "Year",
+        "AdType",
+        "Fuel",
+        "Transmission",
+        "State",
+        "Engine",
+        "Description",
+        "Features",
+        "Availability"
+        ],
     name: 'card',
-    components : {
-        FontAwesomeIcon
-    }
 }
 </script>
-<style>
+<style scoped>
+*{
+    color: #210070;
+}
 .icon {
     font-size: 50px;
 }
 .card{
-    width: 200px;
+    width: 300px;
     background-color: white;
     color: black;
-    border: 1px solid #afafaf;
     padding: 20px;
     border-radius: 10px;
     font-size: 15px;
     transition: .3s;
+    cursor: pointer;
 }
 
 .card:hover{
@@ -49,15 +66,10 @@ export default{
     text-align: left;
     font-size: 15px;
     font-weight: bold;
-}
-.type1 {
-    text-align: left;
-    font-size: 12px;
-    color: #b5b5b5;
     margin-bottom: 20px;
 }
 .photo img{
-    height: 150px;
+    height: 200px;
     max-width: 100%;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -83,5 +95,38 @@ export default{
     color:black;
     font-weight: bold;
     cursor:pointer;
+}
+.type span:first-child{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}.type span:nth-child(2){
+    color: #aea0d1;
+}
+.price{
+    font-size: 25px;
+}
+sup{
+    color: #aea0d1;
+    font-size: 20px;
+}
+sub {
+    color: #aea0d1;
+    font-size: 18px;
+}
+.data .props {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+.data .props span {
+    color: #aea0d1;
+    font-weight: normal;
+}
+.available {
+    font-weight: bold;
+    margin-left: 20px;
+    color: rgb(255, 0, 0);
 }
 </style>

@@ -12,10 +12,6 @@
             <span class="dot active" v-if="currentIndex%images.length+1 === d"></span>
             <span class="dot" v-else></span>
             </span>
-            <!-- <span class="dot active" v-if="currentIndex === 1"></span>
-            <span class="dot" v-else></span>
-            <span class="dot active" v-if="currentIndex === 2"></span>
-            <span class="dot" v-else></span> -->
         </div>
     </div>
 </template>
@@ -26,24 +22,10 @@ data() {
     return {
     images: [
         "./cover1.jpg",
-        "./cover2.webp",
         "./cover3.avif",
         "./cover1.jpg",
-        "./cover2.webp",
         "./cover3.avif",
-        "./cover1.jpg",
-        "./cover2.webp",
-        "./cover3.avif",
-        "./cover1.jpg",
-        "./cover2.webp",
-        "./cover3.avif",
-        "./cover1.jpg",
-        "./cover2.webp",
-        "./cover3.avif",
-        "./cover1.jpg",
-        "./cover2.webp",
-        "./cover3.avif",
-    ],
+        ],
     timer: null,
     currentIndex: 0
     };

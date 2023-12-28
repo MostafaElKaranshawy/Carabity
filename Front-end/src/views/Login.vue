@@ -20,8 +20,7 @@
           <div class="login-button" @click="check()">
             Login
           </div>
-
-          <router-link to="/home" class="to-home"></router-link>
+          <router-link to="/home" class="toHome"></router-link>
           <p class="forget-password form-p">Forget Password ?</p>
           <router-link to="/signup" class="form-p">Sign Up !</router-link>
         </form>
@@ -52,22 +51,27 @@ components: {
 methods: {
   check() {
     if(this.email != '' && this.password != ''){
-      axios.post('http://localhost:8081/getuser', {"email" : this.email,"password" :this.password})
-      .then(res => {
-        this.username = res.data.username;
-        if(this.username != "none"){
-          document.querySelector(".login-form").onsubmit = function() {
-            return false;
-          }
-          document.querySelector(".to-home").click();
-          alert("Hello " + this.username);
+      let user = {
+            email: this.email,
+            password: this.password,
+      }
+      fetch('http://localhost:8081/user/signin',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify(user),
+      })
+      .then(response =>{
+        let data = response.json();
+        this.currentUser = data;
+        if(this.currentUser != null){
+          alert("Login Successifully")
+          document.getElementsByClassName("toHome")[0].click();
         }
-        else {
-          alert("Wrong Email or password")
-        }
-      }).catch(rejected =>{
-        this.registed = "/";
-        alert("Wrong Email or Password");
+      })
+      .catch(error =>{
+        alert("Error: " + error);
       })
     }
   },

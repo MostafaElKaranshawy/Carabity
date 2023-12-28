@@ -22,13 +22,15 @@
           <label for="password" class="child-left">Password</label>
           <input type="password" id="password" placeholder="password" required v-model="password" minlength="8" maxlength="20">
           <label for="age" class="child-left">Age</label>
-          <input type="number" id="age" placeholder="18" required v-model="age" min="18">
-          <button class="Sign-up-button" @click="submitform()">Sign-up</button>
+          <input type="number" id="age" placeholder="18" required v-model="age" min="18" max="100">
+          <div class="Sign-up-button" @click="submitform()">Sign-up</div>
+          <router-link to="/login" class=".form-p"></router-link> 
           <p v-if="valid">Sign up Successfully</p>
           <router-link to="/login" class="form-p">
             <p>Already Have An Account ?</p>
             <p>Click here to Login</p>
           </router-link>
+          <router-link to="/home" class="toHome"></router-link>
         </form>
       </div>
     </div>
@@ -50,7 +52,8 @@ export default {
       email: '',
       password: '',
       age: null,
-      valid: false
+      valid: false,
+      currentUser: {},
     }
   },  
   components: {
@@ -65,24 +68,46 @@ export default {
         document.getElementById('password').classList.remove()
         document.getElementById('age').classList.remove()
         if(this.username != '' && this.email != '' && this.password != '' && this.age >= 18 &&this.password.length>=8 && this.age < 100){
-          
-
-        axios.post('http://localhost:8081/check', {"username" : this.username,"password" :this.password,"email" : this.email,"age" : this.age})
-        .then(res => {
-          this.valid = res.data
-          if(this.username != "none"){
-          document.querySelector(".signup-form").onsubmit = function() {
-              return false;
-            }
-            document.querySelector(".form-p").click();
+          let user = {
+            username: this.username,
+            email: this.email,
+            password: this.password,
+            age: this.age
           }
-          else {
-            alert("Wrong Email or password")
-        }
-        })
-        .then(document.querySelector(".form-p").click())
-        .then(alert("Signed up successfully"))
-        .catch(err => console.log("error"));
+          fetch('http://localhost:8081/user/signup',{
+            method:'POST',
+            headers:{
+              'Content-Type':'application/json',
+            },
+            body:JSON.stringify(user),
+          })
+          .then(response =>{
+            let data = response.json();
+            this.currentUser = data;
+            if(this.currentUser != null){
+              alert("Signed up Successifully")
+              document.getElementsByClassName("toHome")[0].click();
+            }
+          })
+          .catch(error =>{
+            alert("Error: " + error);
+          })
+      //   axios.post('http://localhost:8081/check', {"username" : this.username,"password" :this.password,"email" : this.email,"age" : this.age})
+      //   .then(res => {
+      //     this.valid = res.data
+      //     if(this.username != "none"){
+      //     document.querySelector(".signup-form").onsubmit = function() {
+      //         return false;
+      //       }
+      //       document.querySelector(".form-p").click();
+      //     }
+      //     else {
+      //       alert("Wrong Email or password")
+      //   }
+      //   })
+      //   .then(document.querySelector(".form-p").click())
+      //   .then(alert("Signed up successfully"))
+      //   .catch(err => console.log("error"));
       }
       else{
         if(this.username == ''){
@@ -213,5 +238,8 @@ input::placeholder {
   .container{
     flex-direction: column;
   }
+}
+.error{
+  border : 1px solid red;
 }
 </style>

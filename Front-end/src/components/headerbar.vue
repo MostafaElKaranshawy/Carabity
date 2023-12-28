@@ -1,7 +1,6 @@
 <template>
     <nav>
         <h1>Carabity</h1>
-        <input type="search" placeholder="Search a car" class="search-bar">
         <div class="links">
             <router-link to="/home" class="no-decoration">Home</router-link>
             <router-link to="/about" class="no-decoration">About</router-link>
@@ -27,9 +26,9 @@ nav {
     border-bottom: 0.25px solid #cfcdff;
     color: #4b00ff;
     background: white;
-padding: 20px;
-display: flex;
-justify-content: space-between;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav a {

@@ -17,13 +17,25 @@ public class userService {
         r.loadToJson("E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\users.json");
 
     }
+<<<<<<< Updated upstream
     public User signup(User user) throws IOException, NoSuchAlgorithmException {
         if (checkEmail(user)){
             user.setStatus("This email is already exist!");
+=======
+    public User signup(User user) throws IOException {
+        System.out.println(user.getEmail());
+
+        if (checkEmail(user)){
+            user.setStatus("This email is already exist!");
+            System.out.println(user.getStatus());
+>>>>>>> Stashed changes
             return user;
         }
+        System.out.println(user.getUsername());
+
         if (checkUsername(user)){
             user.setStatus("This username is already exist!");
+<<<<<<< Updated upstream
             return user;
         }
         if(!(user.getEmail().endsWith("@gmail.com")||user.getEmail().endsWith("@alexu.edu.eg"))){
@@ -32,8 +44,18 @@ public class userService {
         }
         if(user.getPassword().length() < 8){
             user.setStatus("Password length must be at least 8");
+=======
+>>>>>>> Stashed changes
             return user;
         }
+//        if(!user.getEmail().endsWith("@gmail.com")&&!user.getEmail().endsWith("@alexu.edu.eg")){
+//            user.setStatus("Invalid domain of email");
+//            return user ;
+//        }
+//        if(user.getPassword().length() < 8){
+//            user.setStatus("Password length must be at least 8 ");
+//            return user ;
+//        }
         user.setStatus("Successfully signed");
         user.setPassword(Encryption.getSHA(user.getPassword()));
         r.add(user);
@@ -45,9 +67,15 @@ public class userService {
             user.setStatus("This email is not exist");
             return user;
         }
+<<<<<<< Updated upstream
          ;
         if (!checkPassword(user)){
             user.setStatus("Invalid password");
+=======
+
+        user = checkPassword(user);
+        if (user.getStatus().equals("Invalid password")){
+>>>>>>> Stashed changes
             return user;
         }
         DataHelper data = new DataHelper() ;
@@ -98,11 +126,16 @@ public class userService {
             if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(hashingPassword))
                 return true ;
         }
+<<<<<<< Updated upstream
         return false ;
+=======
+        user.setStatus("Invalid password");
+        return user ;
+>>>>>>> Stashed changes
     }
 
     public boolean checkEmail(User user){
-        for (User u: r.getUsers()  ) {
+        for (User u : r.getUsers()  ) {
             if(u.getEmail().equals(user.getEmail()))
                 return true ;
         }
@@ -116,7 +149,6 @@ public class userService {
         return false ;
     }
     public ArrayList<User> loadAll() throws IOException {
-
         String path = "E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\users.json";
         return r.loadToJson(path);
     }

@@ -18,9 +18,9 @@ nav {
     border-bottom: 0.25px solid #cfcdff;
     color: #4b00ff;
     background: white;
-padding: 20px;
-display: flex;
-justify-content: space-between;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav a {

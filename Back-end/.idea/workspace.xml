@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="475a91c6-2d5b-4c13-b2ee-f228f1538b9d" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/Data/DataHelper.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/Encryption/Encryption.java" afterDir="false" />
@@ -13,8 +14,28 @@
       <change beforePath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/CarsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/CarsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/Data/Load.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/readAndWriteData.java" beforeDir="false" afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/Data/readAndWriteData.java" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/Encryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/controller/control.java" beforeDir="false" afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/controller/control.java" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/userService.java" beforeDir="false" afterPath="$PROJECT_DIR$/carabity/carabity/src/main/java/com/example/Carabity/carabity/service/userService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/assets/no-picture-profile.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/assets/no-picture-profile.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/components/cards.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/components/cards.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/components/cards/card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/components/cards/card.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/components/headerbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/components/headerbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/components/slider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/components/slider.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/views/SignUp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/views/SignUp.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/views/about.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/views/about.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/views/contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/views/contact.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-end/src/views/staticpage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-end/src/views/staticpage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +69,10 @@
     "Application.CarabityApplication.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+<<<<<<< Updated upstream
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+=======
+>>>>>>> Stashed changes
     "git-widget-placeholder": "backend",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/material/2nd year/1st semester/programming2/mail server/backend"

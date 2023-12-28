@@ -25,8 +25,9 @@ public class control {
     public ResponseEntity<User> signUp(@RequestBody User user) throws IOException {
        try {
            System.out.println("arrive");
-
+           System.out.println(user.getEmail() + "   " + user.getUsername()  );
            user = u.signup(user);
+           System.out.println(user.getStatus());
            if(user.getStatus().equals("Successfully signed")) {
                System.out.println("sign up ");
                return ResponseEntity.ok(user);
