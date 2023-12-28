@@ -125,6 +125,25 @@ public class control {
             return null;
         }
     }
+    @PostMapping("/makeFavorite/{car}")
+    public  ResponseEntity<ArrayList<String>> makeFavorite(@PathVariable String car ){
+        try {
+                return ResponseEntity.ok(u.makeFavorite(car));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
+        }
+    }
+    @DeleteMapping("/removeFromFavorite/{car}")
+    public  ResponseEntity<ArrayList<String>> removeFromFavorite(@PathVariable String car ){
+        try {
+            return ResponseEntity.ok(u.removeFromFavorite(car));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
+        }
+    }
+
+
+
     @PostMapping("/changePassword/{oldPassword}/{newPassword}")
     public  ResponseEntity<String> changePassword(@PathVariable String oldPassword , @PathVariable String newPassword){
         try {

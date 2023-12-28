@@ -15,16 +15,14 @@ public class User {
     private ArrayList<String> newCars = new ArrayList<String>() ;
     private ArrayList<String> rentCars = new ArrayList<String>();
     private ArrayList<String> oldCars = new ArrayList<String>();
+    private ArrayList<String> favorite = new ArrayList<String>() ;
     private String status ;
     public User(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.age = user.getAge();
-        //this.newCars = user.getNewCars() ;
-//        newCars = new ArrayList<String>() ;
-//        rentCars = new ArrayList<String >() ;
-//        oldCars = new ArrayList<String>() ;
+
     }
     public User(){}
     public String getUsername() {
@@ -87,6 +85,9 @@ public class User {
     public void rent(String car){
         System.out.println(rentCars.add(car) );
     }
+    public void fav(String car){
+        favorite.add(car) ;
+    }
 
     public String getStatus() {
         return status;
@@ -97,6 +98,14 @@ public class User {
     }
 
 //    public void setNewCars(String newCars) {
+
+    public ArrayList<String> getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(ArrayList<String> favorite) {
+        this.favorite = favorite;
+    }
 //        this.newCars = newCars;
 //    }
 

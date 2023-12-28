@@ -94,6 +94,36 @@ public class userService {
             }
         }
     }
+    public ArrayList<String> makeFavorite(String car) throws IOException {
+        DataHelper d = new DataHelper() ;
+        User u = d.getUserByEmail(currentuser.getEmail()) ;
+        if(u != null){
+            if(!u.getFavorite().contains(car)){
+                u.fav(car);
+                currentuser.fav(car);
+                r.saveToJson();
+            }
+            return u.getFavorite() ;
+        }
+        return null ;
+    }
+    public ArrayList<String> removeFromFavorite(String car) throws IOException {
+        DataHelper d = new DataHelper() ;
+        User u = d.getUserByEmail(currentuser.getEmail()) ;
+        if(u != null){
+            for(int i = 0 ; i < u.getFavorite().size() ; ++i){
+                if(u.getFavorite().get(i).equals(car)){
+                    u.getFavorite().remove(i) ;
+                    currentuser.getFavorite().remove(i) ;
+                    r.saveToJson();
+                    return u.getFavorite() ;
+                }
+            }
+        }
+
+        return null ;
+    }
+
 
     public boolean checkPassword(User user) throws NoSuchAlgorithmException {
         String hashingPassword = EncryptionHashing.getSHA(user.getPassword());

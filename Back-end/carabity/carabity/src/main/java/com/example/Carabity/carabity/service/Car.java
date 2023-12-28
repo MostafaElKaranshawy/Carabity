@@ -45,6 +45,7 @@ public class Car {
 
     @JsonProperty("Availability")
     private String Availability  ;
+
     public Car(){}
 
     public String getId() {
