@@ -1,6 +1,7 @@
 package com.example.Carabity.carabity.service;
 
 import com.example.Carabity.carabity.service.Data.DataHelper;
+import com.example.Carabity.carabity.service.Data.Load;
 import com.example.Carabity.carabity.service.Data.readAndWriteData;
 import com.example.Carabity.carabity.service.Encryption.EncryptionHashing;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class userService {
@@ -114,7 +116,7 @@ public class userService {
             for(int i = 0 ; i < u.getFavorite().size() ; ++i){
                 if(u.getFavorite().get(i).equals(car)){
                     u.getFavorite().remove(i) ;
-                    
+
                     r.saveToJson();
                     return u.getFavorite() ;
                 }
@@ -123,6 +125,35 @@ public class userService {
         }
 
         return null ;
+    }
+    public float rateCar(String car , int rate) throws IOException {
+        List<Car> cars = CarsService.loadFromJson();
+        DataHelper d = new DataHelper() ;
+        User u =  d.getUserByEmail(currentuser.getEmail()) ;
+        float newRate = 0 ;
+            for (int i = 0 ; i <cars.size(); i ++) {
+                if (cars.get(i).getId().equals(car)) {
+                    if (u.getRating().containsKey(car)) {
+                        newRate = cars.get(i).getRate() * cars.get(i).getNumberOfVoters() - u.getRating().get(car) ;
+                        newRate = ( newRate + rate ) / cars.get(i).getNumberOfVoters() ;
+                        cars.get(i).setRate(newRate);
+                        u.getRating().put(car , rate) ;
+                    }else {
+                        newRate = cars.get(i).getRate() * cars.get(i).getNumberOfVoters() ;
+                        cars.get(i).setNumberOfVoters(cars.get(i).getNumberOfVoters() + 1 );
+                        newRate = ( newRate + rate ) / cars.get(i).getNumberOfVoters() ;
+                        cars.get(i).setRate(newRate);
+                        u.getRating().put(car , rate) ;
+                    }
+                }
+            }
+        Load load = new Load() ;
+        load.setCars(cars);
+        CarsService.saveFromjson(load);
+        r.saveToJson();
+        currentuser = u ;
+        return newRate ;
+
     }
 
 

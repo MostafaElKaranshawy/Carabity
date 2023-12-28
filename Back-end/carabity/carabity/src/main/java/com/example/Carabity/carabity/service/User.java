@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 //@JsonTypeInfo(use = JsonTypeInfo.Id.NAME,include = JsonTypeInfo.As.PROPERTY, visible = true)
 //@JsonIgnoreProperties(value = "attributes",ignoreUnknown = true)
 
@@ -16,7 +18,17 @@ public class User {
     private ArrayList<String> rentCars = new ArrayList<String>();
     private ArrayList<String> oldCars = new ArrayList<String>();
     private ArrayList<String> favorite = new ArrayList<String>() ;
+    private Map<String,Integer> rating = new HashMap<>();
     private String status ;
+
+    public Map<String, Integer> getRating() {
+        return rating;
+    }
+
+    public void setRating(Map<String, Integer> rating) {
+        this.rating = rating;
+    }
+
     public User(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
@@ -87,6 +99,9 @@ public class User {
     }
     public void fav(String car){
         favorite.add(car) ;
+    }
+    public void rate(String id , int r){
+        rating.put(id,r) ;
     }
 
     public String getStatus() {

@@ -10,7 +10,7 @@ public class Car {
 
     @JsonProperty("rate")
 
-    private int rate ;
+    private float rate ;
     @JsonProperty("numberOfVoters")
     private int numberOfVoters ;
     @JsonProperty("id")
@@ -166,11 +166,11 @@ public class Car {
         Availability = availability;
     }
 
-    public int getRate() {
+    public float getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(float rate) {
         this.rate = rate;
     }
 

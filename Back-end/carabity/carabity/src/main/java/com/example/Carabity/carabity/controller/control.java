@@ -133,10 +133,19 @@ public class control {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
     }
+
     @DeleteMapping("/removeFromFavorite/{car}")
     public  ResponseEntity<ArrayList<String>> removeFromFavorite(@PathVariable String car ){
         try {
             return ResponseEntity.ok(u.removeFromFavorite(car));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
+        }
+    }
+    @PostMapping("/rateCar/{car}/{rate}")
+    public  ResponseEntity<Float> rateCar(@PathVariable String car ,@PathVariable int rate ){
+        try {
+            return ResponseEntity.ok(u.rateCar(car , rate));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
