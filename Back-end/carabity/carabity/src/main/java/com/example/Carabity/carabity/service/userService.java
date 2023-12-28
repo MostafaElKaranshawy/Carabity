@@ -100,7 +100,7 @@ public class userService {
         if(u != null){
             if(!u.getFavorite().contains(car)){
                 u.fav(car);
-                currentuser.fav(car);
+
                 r.saveToJson();
             }
             return u.getFavorite() ;
@@ -114,11 +114,12 @@ public class userService {
             for(int i = 0 ; i < u.getFavorite().size() ; ++i){
                 if(u.getFavorite().get(i).equals(car)){
                     u.getFavorite().remove(i) ;
-                    currentuser.getFavorite().remove(i) ;
+                    
                     r.saveToJson();
                     return u.getFavorite() ;
                 }
             }
+            return u.getFavorite() ;
         }
 
         return null ;

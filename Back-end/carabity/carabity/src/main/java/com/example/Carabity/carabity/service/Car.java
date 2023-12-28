@@ -7,6 +7,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("car")
 public class Car {
+
+    @JsonProperty("rate")
+
+    private int rate ;
+    @JsonProperty("numberOfVoters")
+    private int numberOfVoters ;
     @JsonProperty("id")
     private String id;
     @JsonProperty("Photo")
@@ -159,5 +165,25 @@ public class Car {
     public void setAvailability(String availability) {
         Availability = availability;
     }
-    // Additional setters if needed
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public int getNumberOfVoters() {
+        return numberOfVoters;
+    }
+
+    public void setNumberOfVoters(int numberOfVoters) {
+        this.numberOfVoters = numberOfVoters;
+    }
+
+    public String getAvailability() {
+        return Availability;
+    }
+// Additional setters if needed
 }
