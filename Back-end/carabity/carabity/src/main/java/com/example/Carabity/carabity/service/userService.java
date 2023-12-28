@@ -2,7 +2,7 @@ package com.example.Carabity.carabity.service;
 
 import com.example.Carabity.carabity.service.Data.DataHelper;
 import com.example.Carabity.carabity.service.Data.readAndWriteData;
-import com.example.Carabity.carabity.service.Encryption.Encryption;
+import com.example.Carabity.carabity.service.Encryption.EncryptionHashing;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -15,154 +15,124 @@ public class userService {
     private User currentuser ;
     public userService() throws IOException {
         r.loadToJson("E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\users.json");
-
     }
-<<<<<<< Updated upstream
     public User signup(User user) throws IOException, NoSuchAlgorithmException {
-        if (checkEmail(user)){
+        if (checkEmail(user)) {
             user.setStatus("This email is already exist!");
-=======
-    public User signup(User user) throws IOException {
-        System.out.println(user.getEmail());
+            return user;
+        }
+            System.out.println(user.getUsername());
 
-        if (checkEmail(user)){
-            user.setStatus("This email is already exist!");
-            System.out.println(user.getStatus());
->>>>>>> Stashed changes
-            return user;
-        }
-        System.out.println(user.getUsername());
-
-        if (checkUsername(user)){
-            user.setStatus("This username is already exist!");
-<<<<<<< Updated upstream
-            return user;
-        }
-        if(!(user.getEmail().endsWith("@gmail.com")||user.getEmail().endsWith("@alexu.edu.eg"))){
-            user.setStatus("Invalid domain of email");
-            return user;
-        }
-        if(user.getPassword().length() < 8){
-            user.setStatus("Password length must be at least 8");
-=======
->>>>>>> Stashed changes
-            return user;
-        }
-//        if(!user.getEmail().endsWith("@gmail.com")&&!user.getEmail().endsWith("@alexu.edu.eg")){
-//            user.setStatus("Invalid domain of email");
-//            return user ;
-//        }
-//        if(user.getPassword().length() < 8){
-//            user.setStatus("Password length must be at least 8 ");
-//            return user ;
-//        }
-        user.setStatus("Successfully signed");
-        user.setPassword(Encryption.getSHA(user.getPassword()));
-        r.add(user);
-        this.currentuser = user ;
-        return user ;
-    }
-    public User signin(User user) throws IOException, NoSuchAlgorithmException {
-        if (!checkEmail(user)){
-            user.setStatus("This email is not exist");
-            return user;
-        }
-<<<<<<< Updated upstream
-         ;
-        if (!checkPassword(user)){
-            user.setStatus("Invalid password");
-=======
-
-        user = checkPassword(user);
-        if (user.getStatus().equals("Invalid password")){
->>>>>>> Stashed changes
-            return user;
-        }
-        DataHelper data = new DataHelper() ;
-        user = data.getUserByEmail(user.getEmail()) ;
-        user.setStatus("Successfully signed");
-        this.currentuser = user ;
-        System.out.println(currentuser.getEmail());
-        return user ;
-    }
-    public void addNewcar(String newCar) throws IOException {
-        System.out.println(currentuser.getUsername());
-        currentuser.addnew(newCar);
-        for (User u: r.getUsers()  ) {
-            if(u.getEmail().equals(currentuser.getEmail()) ){
-                u.setNewCars( currentuser.getNewCars() ) ;
-                r.saveToJson();
-                return ;
+            if (checkUsername(user)) {
+                user.setStatus("This username is already exist!");
+                return user;
             }
-        }
-    }
-    public void addOldcar(String newCar) throws IOException {
-        System.out.println(currentuser.getUsername());
-        currentuser.addold(newCar);
-        System.out.println(currentuser.getOldCars());
-        for (User u: r.getUsers()  ) {
-            if(u.getEmail().equals(currentuser.getEmail()) ){
-                u.setOldCars(currentuser.getOldCars())  ;
-                r.saveToJson();
-                return ;
+            if (!(user.getEmail().endsWith("@gmail.com") || user.getEmail().endsWith("@alexu.edu.eg"))) {
+                user.setStatus("Invalid domain of email");
+                return user;
             }
-        }
-    }
-    public void addrent(String newCar) throws IOException {
-        System.out.println(currentuser.getUsername());
-        currentuser.rent(newCar);
-        for (User u: r.getUsers()  ) {
-            if(u.getEmail().equals(currentuser.getEmail()) ){
-                u.setRentCars( currentuser.getRentCars() ) ;
-                r.saveToJson();
-                return ;
+            if (user.getPassword().length() < 8) {
+                user.setStatus("Password length must be at least 8");
+                return user;
             }
+            user.setStatus("Successfully signed");
+            user.setPassword(EncryptionHashing.getSHA(user.getPassword()));
+            r.add(user);
+            this.currentuser = user;
+            return user;
         }
-    }
 
-    public boolean checkPassword(User user) throws NoSuchAlgorithmException {
-        String hashingPassword = Encryption.getSHA(user.getPassword());
-        for (User u: r.getUsers()  ) {
-            if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(hashingPassword))
-                return true ;
-        }
-<<<<<<< Updated upstream
-        return false ;
-=======
-        user.setStatus("Invalid password");
-        return user ;
->>>>>>> Stashed changes
-    }
+        public User signin(User user) throws IOException, NoSuchAlgorithmException {
+            if (!checkEmail(user)) {
+                user.setStatus("This email is not exist");
+                return user;
+            }
+            if (!checkPassword(user)) {
+                user.setStatus("Invalid password");
+                return user;
+            }
+                DataHelper data = new DataHelper();
+                user = data.getUserByEmail(user.getEmail());
+                user.setStatus("Successfully signed");
+                this.currentuser = user;
+                System.out.println(currentuser.getEmail());
+                return user;
+            }
 
-    public boolean checkEmail(User user){
-        for (User u : r.getUsers()  ) {
-            if(u.getEmail().equals(user.getEmail()))
-                return true ;
-        }
-        return false ;
-    }
-    public boolean checkUsername(User user){
-        for (User u: r.getUsers()  ) {
-            if(u.getUsername().equals(user.getUsername()))
-                return true ;
-        }
-        return false ;
-    }
-    public ArrayList<User> loadAll() throws IOException {
-        String path = "E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\users.json";
-        return r.loadToJson(path);
-    }
 
-    public User getCurrentuser() {
-        return currentuser;
-    }
+            public void addNewcar(String newCar) throws IOException {
+                System.out.println(currentuser.getUsername());
+                currentuser.addnew(newCar);
+                for (User u: r.getUsers()  ) {
+                    if(u.getEmail().equals(currentuser.getEmail()) ){
+                        u.setNewCars( currentuser.getNewCars() ) ;
+                        r.saveToJson();
+                        return ;
+                    }
+                }
+            }
+            public void addOldcar(String newCar) throws IOException {
+                System.out.println(currentuser.getUsername());
+                currentuser.addold(newCar);
+                System.out.println(currentuser.getOldCars());
+                for (User u: r.getUsers()  ) {
+                    if(u.getEmail().equals(currentuser.getEmail()) ){
+                        u.setOldCars(currentuser.getOldCars())  ;
+                        r.saveToJson();
+                        return ;
+                    }
+                }
+            }
+            public void addrent(String newCar) throws IOException {
+                System.out.println(currentuser.getUsername());
+                currentuser.rent(newCar);
+                for (User u: r.getUsers()  ) {
+                    if(u.getEmail().equals(currentuser.getEmail()) ){
+                        u.setRentCars( currentuser.getRentCars() ) ;
+                        r.saveToJson();
+                        return ;
+                    }
+                }
+            }
 
-    public void setCurrentuser(User currentuser) {
-        this.currentuser = currentuser;
-    }
-    public void print(ArrayList<User> c){
-        for (User u:c ) {
-            System.out.println(u.getOldCars());
-        }
-    }
-}
+            public boolean checkPassword(User user) throws NoSuchAlgorithmException {
+                String hashingPassword = EncryptionHashing.getSHA(user.getPassword());
+                for (User u : r.getUsers()) {
+                    if (u.getEmail().equals(user.getEmail()) && u.getPassword().equals(hashingPassword))
+                        return true;
+                }
+                return false;
+            }
+
+                public boolean checkEmail(User user){
+                    for (User u : r.getUsers()  ) {
+                        if(u.getEmail().equals(user.getEmail()))
+                            return true ;
+                    }
+                    return false ;
+                }
+                public boolean checkUsername(User user){
+                    for (User u: r.getUsers()  ) {
+                        if(u.getUsername().equals(user.getUsername()))
+                            return true ;
+                    }
+                    return false ;
+                }
+                public ArrayList<User> loadAll() throws IOException {
+                    String path = "E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\users.json";
+                    return r.loadToJson(path);
+                }
+
+                public User getCurrentuser() {
+                    return currentuser;
+                }
+
+                public void setCurrentuser(User currentuser) {
+                    this.currentuser = currentuser;
+                }
+                public void print(ArrayList<User> c){
+                    for (User u:c ) {
+                        System.out.println(u.getOldCars());
+                    }
+                }
+            }

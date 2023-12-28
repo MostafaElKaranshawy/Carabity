@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-{"users":[{"username":"youssef","password":"ea1feb33f097db7aa3ffef7397f89431f29a32c3b408e5fde4dab097b433b5a","email":"youssef@gmail.com","age":20,"newCars":[],"rentCars":[],"oldCars":[],"status":"Successfully signed"}]}
-=======
-{"users":[{"username":"rafy hany","password":"12345678","email":null,"age":0,"newCars":[],"rentCars":[],"oldCars":[],"status":"Successfully signed"}]}
->>>>>>> Stashed changes
+{"users":[{"username":"rafy","password":"ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f","email":"rafy@gmail.com","age":20,"newCars":[],"rentCars":[],"oldCars":[],"status":"Successfully signed"},{"username":"andrew","password":"ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f","email":"andrew@gmail.com","age":20,"newCars":[],"rentCars":[],"oldCars":[],"status":"Successfully signed"}]}

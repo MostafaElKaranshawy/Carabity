@@ -1,11 +1,11 @@
-package com.example.Carabity.carabity.service;
+package com.example.Carabity.carabity.service.Encryption;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Encryption {
+public class EncryptionHashing {
     private static String bytesToHex(byte[] hash) {
         BigInteger number = new BigInteger(1, hash);
         StringBuilder hexString = new StringBuilder(number.toString(16));
@@ -19,5 +19,4 @@ public class Encryption {
         byte[] encodedhash = md.digest(input.getBytes(StandardCharsets.UTF_8));
         return bytesToHex(encodedhash);
     }
-
 }
