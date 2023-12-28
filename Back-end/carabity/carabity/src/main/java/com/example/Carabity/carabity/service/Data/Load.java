@@ -1,4 +1,6 @@
-package com.example.Carabity.carabity.service;
+package com.example.Carabity.carabity.service.Data;
+
+import com.example.Carabity.carabity.service.Car;
 
 import java.util.List;
 public class Load {

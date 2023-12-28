@@ -1,14 +1,13 @@
 package com.example.Carabity.carabity.controller;
 
 import com.example.Carabity.carabity.service.*;
+import com.example.Carabity.carabity.service.Data.Load;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
 

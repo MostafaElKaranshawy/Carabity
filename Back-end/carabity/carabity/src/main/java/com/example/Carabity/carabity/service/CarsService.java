@@ -1,5 +1,6 @@
 package com.example.Carabity.carabity.service;
 
+import com.example.Carabity.carabity.service.Data.Load;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 

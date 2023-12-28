@@ -1,8 +1,12 @@
 package com.example.Carabity.carabity.service;
 
+import com.example.Carabity.carabity.service.Data.DataHelper;
+import com.example.Carabity.carabity.service.Data.readAndWriteData;
+import com.example.Carabity.carabity.service.Encryption.Encryption;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 @Service
@@ -13,30 +17,41 @@ public class userService {
         r.loadToJson("E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\users.json");
 
     }
-    public User signup(User user) throws IOException {
+    public User signup(User user) throws IOException, NoSuchAlgorithmException {
         if (checkEmail(user)){
-            user.setStatus("This email is alraedy exist!");
+            user.setStatus("This email is already exist!");
             return user;
         }
         if (checkUsername(user)){
-            user.setStatus("This username is alraedy exist!");
+            user.setStatus("This username is already exist!");
+            return user;
+        }
+        if(!(user.getEmail().endsWith("@gmail.com")||user.getEmail().endsWith("@alexu.edu.eg"))){
+            user.setStatus("Invalid domain of email");
+            return user;
+        }
+        if(user.getPassword().length() < 8){
+            user.setStatus("Password length must be at least 8");
             return user;
         }
         user.setStatus("Successfully signed");
+        user.setPassword(Encryption.getSHA(user.getPassword()));
         r.add(user);
         this.currentuser = user ;
         return user ;
     }
-    public User signin(User user) throws IOException {
+    public User signin(User user) throws IOException, NoSuchAlgorithmException {
         if (!checkEmail(user)){
             user.setStatus("This email is not exist");
             return user;
         }
-        user = checkPassword(user);
-        if (user==null){
+         ;
+        if (!checkPassword(user)){
             user.setStatus("Invalid password");
             return user;
         }
+        DataHelper data = new DataHelper() ;
+        user = data.getUserByEmail(user.getEmail()) ;
         user.setStatus("Successfully signed");
         this.currentuser = user ;
         System.out.println(currentuser.getEmail());
@@ -77,12 +92,13 @@ public class userService {
         }
     }
 
-    public User checkPassword(User user){
+    public boolean checkPassword(User user) throws NoSuchAlgorithmException {
+        String hashingPassword = Encryption.getSHA(user.getPassword());
         for (User u: r.getUsers()  ) {
-            if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword()))
-                return u ;
+            if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(hashingPassword))
+                return true ;
         }
-        return null ;
+        return false ;
     }
 
     public boolean checkEmail(User user){

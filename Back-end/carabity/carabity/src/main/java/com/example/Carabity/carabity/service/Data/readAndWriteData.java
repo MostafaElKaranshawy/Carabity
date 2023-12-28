@@ -1,5 +1,6 @@
-package com.example.Carabity.carabity.service;
+package com.example.Carabity.carabity.service.Data;
 
+import com.example.Carabity.carabity.service.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
