@@ -167,6 +167,15 @@ public class control {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
     }
+    @GetMapping("/getUserInfo")
+    public  ResponseEntity<User> getUserInfo(){
+        try {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(u.getCurrentuser())  ;
+
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
+        }
+    }
 
 
     @PostMapping("/load")
