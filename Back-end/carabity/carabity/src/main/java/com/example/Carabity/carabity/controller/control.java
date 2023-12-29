@@ -194,7 +194,7 @@ public class control {
     @GetMapping("/getUserInfo")
     public  ResponseEntity<User> getUserInfo(){
         try {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(u.getCurrentuser())  ;
+            return ResponseEntity.ok(u.getCurrentuser())  ;
 
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;

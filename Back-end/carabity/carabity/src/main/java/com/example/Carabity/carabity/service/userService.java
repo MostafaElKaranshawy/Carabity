@@ -240,6 +240,7 @@ public class userService {
             return u2 ;
         }
         u.setUsername(newUserName);
+        currentuser.setUsername(newUserName);
         u.setStatus("UserName changed successfully");
         r.saveToJson();
         return u ;
@@ -248,6 +249,7 @@ public class userService {
         DataHelper d = new DataHelper();
         User u = d.getUserByEmail(currentuser.getEmail()) ;
         u.setCover(cover);
+        currentuser.setCover(cover);
         r.saveToJson();
         return u ;
     }
