@@ -188,6 +188,13 @@ public class userService {
         }
         return false ;
     }
+    public boolean checkUsername(String user){
+        for (User u: r.getUsers()  ) {
+            if(u.getUsername().equals(user))
+                return true ;
+        }
+        return false ;
+    }
     public ArrayList<User> loadAll() throws IOException {
         String path = "E:\\material\\2nd year\\1st semester\\HCI\\carabity\\Web\\Back-end\\users.json";
         return r.loadToJson(path);
@@ -205,17 +212,47 @@ public class userService {
             System.out.println(u.getOldCars());
         }
     }
-    public String changePassword(String oldPass , String newPass) throws NoSuchAlgorithmException, IOException {
-        if(!checkPassword(currentuser.getEmail() , oldPass)){
-            return "Old password is not correct" ;
+    public User changePassword(String oldPass , String newPass) throws NoSuchAlgorithmException, IOException {
+        DataHelper d = new DataHelper() ;
+        User u = d.getUserByEmail(currentuser.getEmail()) ;
+        if(!checkPassword(u.getEmail() , oldPass)){
+            User u2 = new User() ;
+            u2.setStatus("Old password is not correct");
+            return u2 ;
         }
         if(newPass.length() < 8){
-            return "New password length must be at least 8" ;
+            User u2 = new User() ;
+            u2.setStatus("New password length must be at least 8");
+            return u2 ;
+
         }
-        currentuser.setPassword(EncryptionHashing.getSHA(newPass));
+        u.setStatus("Password changed successfully");
+        u.setPassword(EncryptionHashing.getSHA(newPass)) ;
         r.saveToJson();
-        return "Password changed successfully" ;
+        return u ;
     }
+    public User changeUserName(String newUserName) throws IOException {
+        DataHelper d = new DataHelper();
+        User u = d.getUserByEmail(currentuser.getEmail()) ;
+        if(checkUsername(newUserName)){
+            User u2 = new User() ;
+            u2.setStatus("User name has already exist");
+            return u2 ;
+        }
+        u.setUsername(newUserName);
+        u.setStatus("UserName changed successfully");
+        r.saveToJson();
+        return u ;
+    }
+    public User changeCover(ProfilePicture cover) throws IOException {
+        DataHelper d = new DataHelper();
+        User u = d.getUserByEmail(currentuser.getEmail()) ;
+        u.setCover(cover);
+        r.saveToJson();
+        return u ;
+    }
+
+
 
 
 }

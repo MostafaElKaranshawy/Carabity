@@ -153,11 +153,11 @@ public class control {
 
 
 
-    @PostMapping("/changePassword/{oldPassword}/{newPassword}")
-    public  ResponseEntity<String> changePassword(@PathVariable String oldPassword , @PathVariable String newPassword){
+    @GetMapping("/changePassword/{oldPassword}/{newPassword}")
+    public  ResponseEntity<User> changePassword(@PathVariable String oldPassword , @PathVariable String newPassword){
         try {
-            String status = u.changePassword(oldPassword, newPassword) ;
-            if(status.equals("Password changed successfully")) {
+            User status = u.changePassword(oldPassword, newPassword) ;
+            if(status.getStatus().equals("Password changed successfully")) {
 
                 return ResponseEntity.ok(status);
             }else {
@@ -167,6 +167,30 @@ public class control {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
         }
     }
+    @GetMapping("/changeUserName/{newUserName}")
+    public  ResponseEntity<User> changeUserName(@PathVariable String newUserName){
+        try {
+            User status = u.changeUserName(newUserName) ;
+            if(status.getStatus().equals("UserName changed successfully")) {
+
+                return ResponseEntity.ok(status);
+            }else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(status)  ;
+            }
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
+        }
+    }
+    @PostMapping("/changeCover")
+    public  ResponseEntity<User> changeCover(@RequestBody ProfilePicture newCover){
+        try {
+            User newUser = u.changeCover(newCover) ;
+                return ResponseEntity.ok(newUser);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null) ;
+        }
+    }
+
     @GetMapping("/getUserInfo")
     public  ResponseEntity<User> getUserInfo(){
         try {

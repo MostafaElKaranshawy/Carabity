@@ -19,7 +19,16 @@ public class User {
     private ArrayList<String> oldCars = new ArrayList<String>();
     private ArrayList<String> favorite = new ArrayList<String>() ;
     private Map<String,Integer> rating = new HashMap<>();
+    private ProfilePicture cover = new ProfilePicture() ;
     private String status ;
+
+    public ProfilePicture getCover() {
+        return cover;
+    }
+
+    public void setCover(ProfilePicture cover) {
+        this.cover = cover;
+    }
 
     public Map<String, Integer> getRating() {
         return rating;
