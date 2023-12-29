@@ -43,6 +43,7 @@ public class User {
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.age = user.getAge();
+        this.cover = user.cover ;
 
     }
     public User(){}
