@@ -1,2 +1,2 @@
-# Web
-HCI PROJECT
+#  Car store web application
+
