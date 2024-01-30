@@ -1,2 +1,2 @@
-#  Car store web application
+#  Car store web application.
 
