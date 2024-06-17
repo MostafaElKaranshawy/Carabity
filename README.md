@@ -1,14 +1,14 @@
-# Carabity for Car Rent.
+# Carabity for Car Rent
 
 Carabity is a Web Applicationt to buy or rent cars online.
 
 ## Table of Contents
 
--   [Features](#features) ✨
--   [Installation](#installation) 🛠️
--   [User_Guide](#user-guide) 📚
--   [Tutorial](#Tutorial) 🌟
--   [Contributors](#contributors) 👩‍💻👨‍💻
+- [Features](#features) ✨
+- [Installation](#installation) 🛠️
+- [User_Guide](#user-guide) 📚
+- [Tutorial](#tutorial) 🌟
+- [Contributors](#contributors) 👩‍💻👨‍💻
 
 ## Features
 
@@ -29,35 +29,30 @@ To use the tools and examples provided in this repository, you need to have npm 
 3. Install the required dependencies.
 
 ## User Guide
--  In the Main page choose to Sign Up or Login if you already have an account on the System.
--  In Signing Up the system will require Some information about you to have the best recommendation System.
--  After Signing in You will be in the Home page which have the following section
-  - Navigation bar (Home, Profile, Contact, About).
-  - Search bar.
-  - Recommendation Section.
-  - Comparison Section.
-  - Main Cars Section with 4 categories (All, New, Old, Rent).
-  - Social Platforms in the footer.
--  Profile Page contains:
-  - Profile Photo
-  - Bought cars
-    - Old Cars
-    - New Cars
-  - Rented Cars
-  - Favourite Cars
-  - Edit data
-    - Changing Password.
-    - Changing Profile Photo.
+
+- In the Main page choose to Sign Up or Login if you already have an account on the System.
+- In Signing Up the system will require Some information about you to have the best recommendation System.
+- After Signing in You will be in the Home page which have the following section
+- Navigation bar (Home, Profile, Contact, About).
+- Search bar.
+- Recommendation Section.
+- Comparison Section.
+- Main Cars Section with 4 categories (All, New, Old, Rent).
+- Social Platforms in the footer.
+- Profile Page contains:
+- Profile Photo
+- Bought cars
+  - Old Cars
+  - New Cars
+- Rented Cars
+- Favourite Cars
+- Edit data
+  - Changing Password.
+  - Changing Profile Photo.
 
 ## Tutorial
 
-
-
-
-Uploading carabity.mp4…
-
-
-
+<video controls src="https://github.com/MostafaElKaranshawy/Carabity/blob/main/carabity.mp4" title="Title"></video>
 
 # Contributors
 
