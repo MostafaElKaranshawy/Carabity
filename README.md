@@ -52,7 +52,11 @@ To use the tools and examples provided in this repository, you need to have npm 
 
 ## Tutorial
 
-<video controls width=350 height=500 src="carabity.mp4" title="Title"></video>
+
+
+https://github.com/MostafaElKaranshawy/Carabity/assets/110842052/8e15c1f9-492b-44bb-9032-2df12616c7f2
+
+
 
 # Contributors
 
