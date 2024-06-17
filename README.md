@@ -7,7 +7,7 @@ Carabity is a Web Applicationt to buy or rent cars online.
 -   [Features](#features) ✨
 -   [Installation](#installation) 🛠️
 -   [User_Guide](#user-guide) 📚
--   [Examples](#examples) 🌟
+-   [Tutorial](#Tutorial) 🌟
 -   [Contributors](#contributors) 👩‍💻👨‍💻
 
 ## Features
@@ -48,10 +48,9 @@ To use the tools and examples provided in this repository, you need to have npm 
   - Edit data
     - Changing Password.
     - Changing Profile Photo.
-# Tutorial
 
-
-https://github.com/MostafaElKaranshawy/Carabity/blob/main/carabity.mp4
+## Tutorial
+<https://github.com/MostafaElKaranshawy/Carabity/blob/main/carabity.mp4>
 
 
 # Contributors
